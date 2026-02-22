@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="css/style.css">
+    
 const modal = document.getElementById("contactModal");
 const openModal = document.getElementById("openModal");
 const openModalFooter = document.getElementById("openModalFooter");
@@ -22,3 +24,5 @@ form.addEventListener("submit", (e) => {
     modal.style.display = "none";
     alert("Ihre Nachricht wurde erfolgreich gesendet");
 });
+
+<script src="js/script.js"></script>
