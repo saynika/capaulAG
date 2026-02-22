@@ -1,3 +1,4 @@
+console.log("JS підключено ✅");
 <link rel="stylesheet" href="./css/style.css">
     
 const modal = document.getElementById("contactModal");
