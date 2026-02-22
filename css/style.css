@@ -24,13 +24,13 @@ body {
 
 .header-container {
     display: flex;
-    align-items: center;
+    align-items: right;
     justify-content: space-between;
     padding: 18px 0;
 }
 
 .logo img {
-    height: 60px;
+    height: 100px;
 }
 
 .nav {
