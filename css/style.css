@@ -1,1 +1,61 @@
 
+/* ===== HEADER ===== */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+.header-left nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+}
+
+.header-left nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.header-buttons button {
+    margin-left: 10px;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.header-right .logo {
+    height: 60px;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    display: flex;
+    justify-content: space-around;
+    padding: 30px;
+    background-color: #222;
+    color: white;
+}
+
+footer .footer-column {
+    flex: 1;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer button {
+    margin-top: 10px;
+    padding: 6px 10px;
+    cursor: pointer;
+}
+
+footer .logo-footer {
+    height: 50px;
+    margin-bottom: 10px;
+}
