@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="./css/style.css">
     
 const modal = document.getElementById("contactModal");
 const openModal = document.getElementById("openModal");
@@ -25,4 +25,4 @@ form.addEventListener("submit", (e) => {
     alert("Ihre Nachricht wurde erfolgreich gesendet");
 });
 
-<script src="js/script.js"></script>
+<script src="./js/script.js"></script>
