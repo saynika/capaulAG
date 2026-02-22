@@ -1,14 +1,24 @@
-<script src="js/script.js"></script>
+const modal = document.getElementById("contactModal");
+const openModal = document.getElementById("openModal");
+const openModalFooter = document.getElementById("openModalFooter");
+const form = document.getElementById("contactForm");
 
-// ===== HEADER BUTTONS =====
-document.querySelectorAll('.call-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        alert("Ruft die Firma an!");
-    });
+openModal.addEventListener("click", () => {
+    modal.style.display = "flex";
 });
 
-document.querySelectorAll('.write-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        alert("Öffnet das Kontaktformular!");
-    });
+openModalFooter.addEventListener("click", () => {
+    modal.style.display = "flex";
+});
+
+window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+        modal.style.display = "none";
+    }
+});
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    modal.style.display = "none";
+    alert("Ihre Nachricht wurde erfolgreich gesendet");
 });
