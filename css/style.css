@@ -1,129 +1,210 @@
-/* =========================
-   RESET
-========================= */
+/* =========================================
+   1. RESET
+========================================= */
 
-* {
-  margin: 0;
-  padding: 0;
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-/* =========================
-   VARIABLES
-========================= */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+}
+
+/* =========================================
+   2. DESIGN SYSTEM (VARIABLES)
+========================================= */
 
 :root {
   --primary: #c00000;
-  --dark: #111;
-  --light: #ffffff;
-  --gray: #f4f4f4;
+  --primary-hover: #9a0000;
+
+  --text: #111111;
+  --text-light: #555555;
+
+  --bg: #ffffff;
+  --border: #e9e9e9;
+
+  --radius: 6px;
+  --transition: 0.25s ease;
+
+  --container: 1200px;
+  --header-height: 84px;
 }
 
-/* =========================
-   BASE
-========================= */
+/* =========================================
+   3. BASE TYPOGRAPHY
+========================================= */
 
 body {
   font-family: 'Montserrat', sans-serif;
-  color: var(--dark);
-  background: var(--light);
-  padding-top: 100px; /* щоб контент не ховався під fixed header */
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  padding-top: var(--header-height);
+  -webkit-font-smoothing: antialiased;
 }
 
 .container {
-  width: 90%;
-  max-width: 1200px;
-  margin: auto;
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 24px;
 }
 
-/* =========================
-   HEADER
-========================= */
+/* =========================================
+   4. HEADER (PROFESSIONAL VERSION)
+========================================= */
 
 .header {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: #ffffff; /* повністю білий */
-  border-bottom: 1px solid #eee;
+  inset: 0 0 auto 0;
+  height: var(--header-height);
+  background: #ffffff;
+  border-bottom: 1px solid var(--border);
   z-index: 1000;
 }
 
 .header-inner {
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 18px 0;
+  gap: 32px;
+}
+
+/* ---------- LOGO ---------- */
+
+.logo {
+  display: flex;
+  align-items: center;
 }
 
 .logo img {
-  height: 70px;
+  height: 52px;
+  display: block;
 }
+
+/* ---------- NAVIGATION ---------- */
 
 .nav {
   display: flex;
-  gap: 30px;
+  align-items: center;
+  gap: 32px;
 }
 
 .nav a {
   text-decoration: none;
-  color: var(--dark);
+  color: var(--text);
   font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 0.3px;
   position: relative;
+  transition: var(--transition);
 }
+
+.nav a:hover {
+  color: var(--primary);
+}
+
+/* subtle underline animation */
 
 .nav a::after {
   content: "";
   position: absolute;
+  left: 0;
+  bottom: -6px;
   width: 0;
   height: 2px;
-  bottom: -5px;
-  left: 0;
   background: var(--primary);
-  transition: 0.3s;
+  transition: var(--transition);
 }
 
 .nav a:hover::after {
   width: 100%;
 }
 
+/* ---------- ACTIONS (BUTTONS AREA) ---------- */
+
 .actions {
   display: flex;
-  gap: 15px;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
 }
 
-/* =========================
-   BUTTONS
-========================= */
+/* =========================================
+   5. BUTTON SYSTEM
+========================================= */
 
 .btn {
-  padding: 12px 24px;
-  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 10px 22px;
+  border-radius: var(--radius);
+
+  font-size: 14px;
   font-weight: 600;
   text-decoration: none;
-  transition: 0.3s;
+
   cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
 }
+
+/* Primary Button */
 
 .btn-primary {
   background: var(--primary);
-  color: #fff;
+  color: #ffffff;
 }
 
 .btn-primary:hover {
-  background: #900000;
-  transform: translateY(-3px);
+  background: var(--primary-hover);
+  transform: translateY(-2px);
 }
+
+/* Outline Button */
 
 .btn-outline {
-  border: 2px solid var(--dark);
-  color: var(--dark);
+  border: 1.5px solid var(--text);
+  color: var(--text);
 }
 
-.btn-outline.light {
-  border: 2px solid #fff;
-  color: #fff;
+.btn-outline:hover {
+  background: var(--text);
+  color: #ffffff;
+}
+
+/* =========================================
+   6. RESPONSIVE (CLEAN & SAFE)
+========================================= */
+
+@media (max-width: 992px) {
+  .nav {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav {
+    display: none; /* поки що без бургер-меню */
+  }
+
+  .actions {
+    gap: 10px;
+  }
+
+  .logo img {
+    height: 44px;
+  }
 }
 
 /* =========================
