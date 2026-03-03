@@ -10,7 +10,7 @@ body {
 }
 
 .container {
-    width: 90%;
+    width: 95%;
     max-width: 1300px;
     margin: auto;
 }
@@ -27,6 +27,7 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 14px 0;
+    gap: 40px;
 }
 
 /* LOGO */
@@ -40,8 +41,7 @@ body {
 .nav {
     display: flex;
     gap: 32px;
-    margin-left: auto;
-    margin-right: 40px;
+    margin-left: auto;   /* штовхає меню вправо */
 }
 
 .nav a {
@@ -61,6 +61,7 @@ body {
 .header-actions {
     display: flex;
     gap: 14px;
+    margin-left: 30px;
 }
 
 .btn {
@@ -176,9 +177,10 @@ body{
 
 .header{
   position:fixed;
+  top:0;
+  left:0;
   width:100%;
-  backdrop-filter:blur(10px);
-  background:rgba(255,255,255,0.85);
+  background:#ffffff;   /* повністю білий */
   border-bottom:1px solid #eee;
   z-index:1000;
 }
