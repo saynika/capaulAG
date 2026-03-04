@@ -368,10 +368,13 @@ body {
   color:var(--primary);
 }
 
-.team-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:40px;
+.team-grid {
+    display: grid;
+    /* Замість 1fr (на всю ширину) ставимо фіксований розмір, наприклад 300px */
+    grid-template-columns: repeat(2, 300px); 
+    gap: 60px;
+    justify-content: center; /* Центруємо обидві картки по середині сайту */
+    margin-top: 40px;
 }
 
 .team-img {
