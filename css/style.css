@@ -1,19 +1,8 @@
-/* --- ТВОЯ БАЗА (БЕЗ ЗМІН) --- */
+/* --- БАЗОВІ НАЛАШТУВАННЯ --- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-body {
-    font-family: 'Montserrat', sans-serif;
-    color: #111;
-}
-
-.container {
-    width: 95%;
-    max-width: 1300px;
-    margin: auto;
 }
 
 :root {
@@ -21,15 +10,29 @@ body {
     --dark: #111;
     --light: #fff;
     --gray: #f4f4f4;
+    --transition: 0.3s ease;
 }
 
-/* --- ХЕДЕР (БЕЗ ЗМІН) --- */
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--dark);
+    line-height: 1.6;
+    background-color: #fff;
+    display: block; /* Важливо: ніяких флексів на body! */
+}
+
+.container {
+    width: 92%;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* --- HEADER --- */
 .header {
     position: fixed;
     top: 0;
-    left: 0;
     width: 100%;
-    background: #ffffff;
+    background: #fff;
     border-bottom: 1px solid #eee;
     z-index: 1000;
 }
@@ -38,92 +41,60 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 14px 0;
-    gap: 40px;
+    padding: 12px 0;
 }
 
 .logo img { height: 70px; }
 
-.nav {
-    display: flex;
-    gap: 32px;
-    margin-left: auto;
+.nav { display: flex; gap: 30px; margin-left: auto; }
+.nav a { 
+    text-decoration: none; 
+    color: var(--dark); 
+    font-weight: 500; 
+    transition: var(--transition);
 }
+.nav a:hover { color: var(--primary); }
 
-.nav a {
-    text-decoration: none;
-    color: var(--dark);
-    font-weight: 500;
-    font-size: 15px;
-    position: relative;
-    transition: 0.3s ease;
-}
+.header-actions { display: flex; gap: 15px; margin-left: 30px; }
 
-.nav a::after {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -5px;
-    left: 0;
-    background: var(--primary);
-    transition: .3s;
-}
-
-.nav a:hover::after { width: 100%; }
-
-.header-actions { display: flex; gap: 14px; margin-left: 30px; }
-
-/* --- КНОПКИ (БЕЗ ЗМІН) --- */
+/* --- BUTTONS --- */
 .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    min-width: 150px;
-    height: 46px;
-    padding: 0 20px;
+    padding: 12px 28px;
     border-radius: 4px;
     font-weight: 600;
-    font-size: 14px;
-    cursor: pointer;
     text-decoration: none;
+    transition: var(--transition);
+    cursor: pointer;
     border: none;
-    transition: 0.3s ease;
 }
 
 .btn-primary { background: var(--primary); color: #fff; }
 .btn-primary:hover { background: #900000; transform: translateY(-2px); }
-.btn-outline.light { border: 2px solid #fff; color: #fff; }
 
-/* --- ТИМЧАСОВЕ ВИПРАВЛЕННЯ ГЛОБАЛЬНИХ СТИЛІВ (щоб нічого не сипалося) --- */
-body {
-    display: block; /* Переконуємося, що body не flex */
-}
+.btn-outline-light { border: 2px solid #fff; color: #fff; background: transparent; }
+.btn-outline-light:hover { background: #fff; color: #000; }
 
-/* --- ПРОФЕСІЙНИЙ HERO СЛАЙДЕР --- */
+/* --- PREMUM HERO SLIDER (Текст поверх фото) --- */
 .hero-slider {
     position: relative;
     width: 100%;
-    height: 100vh; /* На весь екран */
+    height: 100vh;
     min-height: 600px;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    overflow: hidden;
     background: #000;
+    overflow: hidden;
 }
 
 .hero-slider .slider-wrapper {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     z-index: 1;
 }
 
-/* Стилі слайдів ТІЛЬКИ для Hero */
 .hero-slider .slide {
     position: absolute;
     inset: 0;
@@ -132,109 +103,132 @@ body {
     object-fit: cover;
     opacity: 0;
     transition: opacity 1.5s ease-in-out;
-    z-index: 1;
 }
 
-.hero-slider .slide.active {
-    opacity: 1;
-    z-index: 2;
-}
+.hero-slider .slide.active { opacity: 1; z-index: 2; }
 
-/* Оверлей ТІЛЬКИ для Hero */
 .hero-slider .slider-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 100%);
+    background: linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 100%);
     z-index: 3;
 }
 
-/* Контент поверх фону */
 .hero-content {
     position: relative;
     z-index: 10;
     color: #fff;
     max-width: 800px;
-    text-align: left;
 }
 
-.hero-content h1 {
-    font-size: 56px;
-    font-weight: 800;
-    line-height: 1.1;
-    margin-bottom: 25px;
-}
+.hero-content h1 { font-size: 56px; font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+.hero-content p { font-size: 19px; margin-bottom: 35px; opacity: 0.9; }
+.hero-buttons { display: flex; gap: 20px; }
 
-.hero-content p {
-    font-size: 19px;
-    margin-bottom: 40px;
-    max-width: 650px;
-}
+/* --- TRUST СЕКЦІЯ --- */
+.trust { background: var(--gray); padding: 80px 0; position: relative; z-index: 5; }
+.trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; }
+.trust h3 { font-size: 42px; color: var(--primary); margin-bottom: 5px; }
 
-.hero-buttons {
-    display: flex;
-    gap: 20px;
-}
+/* --- ЗАГАЛЬНІ СЕКЦІЇ --- */
+.section { padding: 100px 0; position: relative; background: #fff; }
+.section-head { text-align: center; margin-bottom: 60px; }
+.section-head h2 { font-size: 36px; }
 
-.btn-outline-light {
-    border: 2px solid #fff;
-    color: #fff;
-    background: transparent;
-}
-
-.btn-outline-light:hover {
+/* --- КАРТКИ ПОСЛУГ --- */
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.service-card {
     background: #fff;
-    color: #000;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: 0.4s;
+}
+.service-card:hover { transform: translateY(-10px); }
+
+/* --- UNSER PROZESS (ВІДНОВЛЕНО) --- */
+.process {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    text-align: center;
+    margin-top: 40px;
 }
 
-/* --- ВІДНОВЛЕННЯ БЛОКУ КОМАНДИ ТА ІНШИХ СЕКЦІЙ --- */
-.section {
-    position: relative;
-    padding: 100px 0;
-    background: #fff; /* Повертаємо білий фон іншим блокам */
-    z-index: 5;
+.step span {
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--primary);
+    display: block;
+    margin-bottom: 15px;
 }
 
+/* --- КОМАНДА (МЕНШІ ФОТО 300px) --- */
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(2, 300px); /* Твій фіксований розмір */
+    grid-template-columns: repeat(2, 300px);
     gap: 60px;
     justify-content: center;
-    margin-top: 40px;
 }
 
 .team-img {
     width: 100%;
-    aspect-ratio: 3/4;
+    aspect-ratio: 3 / 4;
     border-radius: 8px;
     overflow: hidden;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    background: #eee;
 }
 
-.team-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.team-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.team-card h3 { font-size: 22px; margin-bottom: 5px; }
+.team-card p { color: var(--primary); font-weight: 600; text-transform: uppercase; font-size: 14px; }
+
+/* --- CTA SECTION --- */
+.cta { background: var(--primary); color: #fff; text-align: center; padding: 80px 0; }
+
+/* --- REVEAL ANIMATION --- */
+.reveal { opacity: 0; transform: translateY(30px); transition: 1s ease; }
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+/* --- FOOTER (ЗАФІКСОВАНО) --- */
+.footer {
+    background: #000;
+    color: #fff;
+    padding: 80px 0 40px;
+    position: relative;
+    z-index: 10;
 }
 
-/* --- TRUST (БЕЗ ЗМІН) --- */
-.trust { background: var(--gray); padding: 80px 0; }
-.trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; }
-.trust h3 { font-size: 42px; color: var(--primary); }
-
-/* --- СЕКЦІЇ ТА КАРТКИ (БЕЗ ЗМІН) --- */
-.section { padding: 120px 0; }
-.section-head { text-align: center; margin-bottom: 60px; }
-.section-head h2 { font-size: 36px; margin-bottom: 10px; }
-
-.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
-.service-card {
-    background: #fff;
-    padding: 50px;
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    transition: .4s;
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
 }
-.service-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
 
-/* --- ПРОЦЕС (БЕЗ ЗМІН) --- */
-.process { display: grid; grid-
+.footer-column { flex: 1; min-width: 250px; display: flex; flex-direction: column; gap: 15px; }
+.footer-column a { color: #fff; text-decoration: none; transition: 0.3s; opacity: 0.8; }
+.footer-column a:hover { color: var(--primary); opacity: 1; }
+.footer-logo { height: 65px; object-fit: contain; margin-bottom: 10px; }
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 40px;
+    margin-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 14px;
+    opacity: 0.5;
+}
+
+/* --- АДАПТИВНІСТЬ --- */
+@media(max-width: 992px) {
+    .grid-3, .process, .trust-grid { grid-template-columns: 1fr 1fr; }
+    .hero-content h1 { font-size: 38px; }
+    .team-grid { grid-template-columns: 1fr; }
+}
+
+@media(max-width: 600px) {
+    .grid-3, .process, .trust-grid { grid-template-columns: 1fr; }
+    .nav { display: none; }
+}
