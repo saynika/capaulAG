@@ -375,17 +375,19 @@ body {
 }
 
 .team-img {
-    height: 400px; /* Можна збільшити висоту для кращого вигляду */
+    width: 100%;
+    /* Видаліть фіксовану висоту height: 400px, якщо вона була */
+    aspect-ratio: 3 / 4; /* Робить блок вертикальним (3 одиниці ширини на 4 висоти) */
     background: #ddd;
     border-radius: 8px;
     margin-bottom: 20px;
-    overflow: hidden; /* Важливо: щоб картинка не виступала за закруглені кути */
+    overflow: hidden;
 }
 
 .team-img img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Картинка заповнить блок, обрізаючись по краях без деформації */
+    object-fit: cover; /* Заповнює блок, зберігаючи пропорції обличчя */
     display: block;
 }
 
