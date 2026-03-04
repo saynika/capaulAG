@@ -489,7 +489,7 @@ body {
 
 @media(max-width:992px){
   .grid-3,.trust-grid,.process,.team-grid,.gallery{
-    grid-template-columns:1fr 1fr;
+    
   }
 }
 
