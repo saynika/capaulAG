@@ -76,3 +76,19 @@ counters.forEach(counter => {
     // але поки що залишимо як у вас — запуск при старті.
     update();
 });
+// Автоматичний слайдер для Hero
+const slides = document.querySelectorAll('.slide');
+let currentSlide = 0;
+
+function nextSlide() {
+    if (slides.length === 0) return; // перевірка на всяк випадок
+    
+    slides[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].classList.add('active');
+}
+
+// Запускаємо інтервал
+if (slides.length > 0) {
+    setInterval(nextSlide, 4000); 
+}
