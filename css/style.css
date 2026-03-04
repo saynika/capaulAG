@@ -96,19 +96,25 @@ body {
 .btn-primary:hover { background: #900000; transform: translateY(-2px); }
 .btn-outline.light { border: 2px solid #fff; color: #fff; }
 
-/* --- НОВИЙ PREMUM HERO (ТЕКСТ ПОВЕРХ СЛАЙДЕРА) --- */
+/* --- ТИМЧАСОВЕ ВИПРАВЛЕННЯ ГЛОБАЛЬНИХ СТИЛІВ (щоб нічого не сипалося) --- */
+body {
+    display: block; /* Переконуємося, що body не flex */
+}
+
+/* --- ПРОФЕСІЙНИЙ HERO СЛАЙДЕР --- */
 .hero-slider {
     position: relative;
     width: 100%;
     height: 100vh; /* На весь екран */
+    min-height: 600px;
     display: flex;
-    align-items: center; /* Центрує текст по вертикалі всередині слайдера */
+    align-items: center;
+    justify-content: flex-start;
     overflow: hidden;
     background: #000;
 }
 
-/* Контейнер для фото-фону */
-.slider-wrapper {
+.hero-slider .slider-wrapper {
     position: absolute;
     top: 0;
     left: 0;
@@ -117,55 +123,51 @@ body {
     z-index: 1;
 }
 
-.slide {
+/* Стилі слайдів ТІЛЬКИ для Hero */
+.hero-slider .slide {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     opacity: 0;
-    transition: opacity 1.8s ease-in-out; /* Плавне розчинення */
+    transition: opacity 1.5s ease-in-out;
+    z-index: 1;
 }
 
-.slide.active {
+.hero-slider .slide.active {
     opacity: 1;
     z-index: 2;
 }
 
-/* Градієнтний оверлей для того, щоб текст зліва ЗАВЖДИ читався */
-.slider-overlay {
+/* Оверлей ТІЛЬКИ для Hero */
+.hero-slider .slider-overlay {
     position: absolute;
     inset: 0;
     background: linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 100%);
     z-index: 3;
 }
 
-/* Контентний шар */
-.hero-content-wrapper {
-    position: relative;
-    z-index: 10; /* Вище за всі картинки */
-    width: 95%;
-    max-width: 1300px;
-    margin: 0 auto;
-}
-
+/* Контент поверх фону */
 .hero-content {
-    max-width: 750px;
-    text-align: left;
+    position: relative;
+    z-index: 10;
     color: #fff;
+    max-width: 800px;
+    text-align: left;
 }
 
 .hero-content h1 {
     font-size: 56px;
     font-weight: 800;
     line-height: 1.1;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .hero-content p {
     font-size: 19px;
-    margin-bottom: 35px;
-    opacity: 0.9;
+    margin-bottom: 40px;
+    max-width: 650px;
 }
 
 .hero-buttons {
@@ -173,7 +175,6 @@ body {
     gap: 20px;
 }
 
-/* Стиль для кнопки-аутлайну, щоб вона була білою поверх фото */
 .btn-outline-light {
     border: 2px solid #fff;
     color: #fff;
@@ -183,6 +184,36 @@ body {
 .btn-outline-light:hover {
     background: #fff;
     color: #000;
+}
+
+/* --- ВІДНОВЛЕННЯ БЛОКУ КОМАНДИ ТА ІНШИХ СЕКЦІЙ --- */
+.section {
+    position: relative;
+    padding: 100px 0;
+    background: #fff; /* Повертаємо білий фон іншим блокам */
+    z-index: 5;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 300px); /* Твій фіксований розмір */
+    gap: 60px;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.team-img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.team-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* --- TRUST (БЕЗ ЗМІН) --- */
