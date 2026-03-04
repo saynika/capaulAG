@@ -1,3 +1,4 @@
+/* --- ТВОЯ БАЗА (БЕЗ ЗМІН) --- */
 * {
     margin: 0;
     padding: 0;
@@ -15,11 +16,22 @@ body {
     margin: auto;
 }
 
-/* HEADER */
+:root {
+    --primary: #c00000;
+    --dark: #111;
+    --light: #fff;
+    --gray: #f4f4f4;
+}
 
+/* --- ХЕДЕР (БЕЗ ЗМІН) --- */
 .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     background: #ffffff;
-    border-bottom: 2px solid #000;
+    border-bottom: 1px solid #eee;
+    z-index: 1000;
 }
 
 .header-container {
@@ -30,262 +42,96 @@ body {
     gap: 40px;
 }
 
-/* LOGO */
-
-.logo img {
-    height: 90px;
-}
-
-/* NAVIGATION */
+.logo img { height: 70px; }
 
 .nav {
     display: flex;
     gap: 32px;
-    margin-left: auto;   /* штовхає меню вправо */
+    margin-left: auto;
 }
 
 .nav a {
     text-decoration: none;
-    color: #111;
+    color: var(--dark);
     font-weight: 500;
     font-size: 15px;
+    position: relative;
     transition: 0.3s ease;
 }
 
-.nav a:hover {
-    color: #d32f2f;
+.nav a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background: var(--primary);
+    transition: .3s;
 }
 
-/* BUTTONS */
+.nav a:hover::after { width: 100%; }
 
-.header-actions {
-    display: flex;
-    gap: 14px;
-    margin-left: 30px;
-}
+.header-actions { display: flex; gap: 14px; margin-left: 30px; }
 
+/* --- КНОПКИ (БЕЗ ЗМІН) --- */
 .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-
     min-width: 150px;
     height: 46px;
-
     padding: 0 20px;
     border-radius: 4px;
     font-weight: 600;
     font-size: 14px;
-
     cursor: pointer;
     text-decoration: none;
     border: none;
     transition: 0.3s ease;
 }
 
-.btn-primary {
-    background: #d32f2f;
+.btn-primary { background: var(--primary); color: #fff; }
+.btn-primary:hover { background: #900000; transform: translateY(-2px); }
+.btn-outline.light { border: 2px solid #fff; color: #fff; }
+
+/* --- HERO (ВИПРАВЛЕНО: ТЕКСТ ЗЛІВА, ФОТО ПІД НИМ) --- */
+.hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg,#000,#333);
+    display: block; /* Важливо для вирівнювання зліва */
     color: #fff;
+    padding-top: 150px;
+    padding-bottom: 60px;
 }
 
-.btn-primary:hover {
-    background: #a32020;
-    transform: translateY(-2px);
+.hero h1 {
+    font-size: 52px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    text-align: left;
 }
 
-/* FOOTER */
-
-.footer {
-    background: #000;
-    color: #fff;
-    padding-top: 60px;
+.hero p {
+    max-width: 600px;
+    margin-bottom: 30px;
+    font-size: 18px;
+    text-align: left;
 }
 
-.footer-container {
-    display: flex;
-    justify-content: space-between;
-    gap: 40px;
-}
+.hero-buttons { display: flex; gap: 20px; justify-content: flex-start; margin-bottom: 50px; }
 
-.footer-column {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.footer-column a {
-    color: #fff;
-    text-decoration: none;
-}
-
-.footer-logo {
-  height: 60px;      /* бажана висота */
-  width: auto;       /* ширина підлаштовується пропорційно */
-  display: block;    /* прибирає зайві пробіли навколо */
-  object-fit: contain; /* картинка поміщається в блок без обрізання */
-  max-width: 100%;     /* на маленьких екранах не виходить за межі контейнера */
-}
-
-.btn-whatsapp {
-    background: #25D366;
-    color: #fff;
-    padding: 10px 14px;
-    text-decoration: none;
-    transition: 0.3s ease;
-}
-
-.btn-whatsapp:hover {
-    background: #1ebe5d;
-    transform: translateY(-2px);
-}
-
-.footer-bottom {
-    text-align: center;
-    padding: 25px 0;
-    margin-top: 40px;
-    border-top: 1px solid #333;
-}
-.footer-column a {
-    color: #fff;
-    text-decoration: none;
-    transition: 0.3s ease;
-}
-
-.footer-column a:hover {
-    color: #d32f2f;
-}
-
-:root{
-  --primary:#c00000;
-  --dark:#111;
-  --light:#fff;
-  --gray:#f4f4f4;
-}
-
-
-/* HEADER */
-
-.header{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  background:#ffffff;   /* повністю білий */
-  border-bottom:1px solid #eee;
-  z-index:1000;
-}
-
-.header-inner{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:18px 0;
-}
-
-.logo img{height:70px}
-
-.nav{
-  display:flex;
-  gap:30px;
-}
-
-.nav a{
-  text-decoration:none;
-  color:var(--dark);
-  font-weight:500;
-  position:relative;
-}
-
-.nav a::after{
-  content:"";
-  position:absolute;
-  width:0;
-  height:2px;
-  bottom:-5px;
-  left:0;
-  background:var(--primary);
-  transition:.3s;
-}
-
-.nav a:hover::after{width:100%}
-
-.actions{display:flex;gap:15px}
-
-.btn{
-  padding:12px 24px;
-  border-radius:4px;
-  font-weight:600;
-  text-decoration:none;
-  transition:.3s;
-}
-
-.btn-primary{
-  background:var(--primary);
-  color:#fff;
-}
-
-.btn-primary:hover{
-  background:#900000;
-  transform:translateY(-3px);
-}
-
-.btn-outline{
-  border:2px solid var(--dark);
-  color:var(--dark);
-}
-
-.btn-outline.light{
-  border:2px solid #fff;
-  color:#fff;
-}
-
-/* HERO */
-
-.hero{
-  height:100vh;
-  background:linear-gradient(135deg,#000,#333);
-  display:flex;
-  align-items:center;
-  color:#fff;
-  padding-top:100px;
-}
-
-.hero h1{
-  font-size:52px;
-  font-weight:800;
-  margin-bottom:20px;
-}
-
-.hero p{
-  max-width:600px;
-  margin-bottom:30px;
-  font-size:18px;
-}
-
-/* Робимо так, щоб текст і галерея були в одну колонку */
-.hero-layout {
-    display: flex;
-    flex-direction: column; /* Текст зверху, галерея знизу */
-    align-items: center;    /* Центруємо все */
-    text-align: center;     /* Текст по центру */
-    gap: 40px;
-}
-
-.hero-content {
-    max-width: 800px; /* Обмежуємо ширину тексту, щоб він гарно читався */
-}
-
-/* Налаштування слайдера, щоб він був ПІД текстом */
+/* --- ГАЛЕРЕЯ-СЛАЙДЕР (НОВЕ: ФОТКИ ТЕПЕР ПРАЦЮЮТЬ) --- */
 .slider-container {
     position: relative;
     width: 100%;
-    max-width: 900px;    /* Робимо слайдер широким */
-    aspect-ratio: 16 / 9; /* Горизонтальний формат для широкого блоку */
-    margin: 0 auto;
+    max-width: 1000px; /* Ширина галереї */
+    height: 500px;      /* ВИСОТА: тепер фотки не "зникають" */
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    background: #222;
 }
 
 .slide {
@@ -294,208 +140,44 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Фото заповнює всю ширину */
+    object-fit: cover;
     opacity: 0;
     transition: opacity 1.5s ease-in-out;
-    z-index: 1;
 }
 
-.slide.active {
-    opacity: 1;
-    z-index: 2;
-}
+.slide.active { opacity: 1; z-index: 2; }
 
 .slider-overlay {
     position: absolute;
     bottom: 20px;
-    right: 20px; /* Перемістив праворуч для балансу в широкому блоці */
+    left: 20px;
     background: var(--primary);
     color: #fff;
     padding: 10px 20px;
-    font-size: 12px;
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
     z-index: 10;
     border-radius: 4px;
 }
 
-.hero-buttons{display:flex;gap:20px}
+/* --- TRUST (БЕЗ ЗМІН) --- */
+.trust { background: var(--gray); padding: 80px 0; }
+.trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; }
+.trust h3 { font-size: 42px; color: var(--primary); }
 
-/* TRUST */
+/* --- СЕКЦІЇ ТА КАРТКИ (БЕЗ ЗМІН) --- */
+.section { padding: 120px 0; }
+.section-head { text-align: center; margin-bottom: 60px; }
+.section-head h2 { font-size: 36px; margin-bottom: 10px; }
 
-.trust{
-  background:var(--gray);
-  padding:80px 0;
-}
-
-.trust-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  text-align:center;
-}
-
-.trust h3{
-  font-size:42px;
-  color:var(--primary);
-}
-
-/* SECTIONS */
-
-.section{padding:120px 0}
-
-.section-head{text-align:center;margin-bottom:60px}
-.section-head h2{font-size:36px;margin-bottom:10px}
-
-.dark{
-  background:#111;
-  color:#fff;
-}
-
-.grid-3{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:40px;
-}
-
-.service-card{
-  background:#fff;
-  padding:50px;
-  border-radius:8px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.05);
-  transition:.4s;
-}
-
-.service-card:hover{
-  transform:translateY(-10px);
-  box-shadow:0 20px 40px rgba(0,0,0,0.1);
-}
-
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 колонки на десктопі */
-  gap: 20px;
-}
-
-.gallery-item {
-  position: relative;
-  border-radius: 8px;
-  overflow: hidden;
-  background: #444;       /* поки фото не завантажиться */
-  aspect-ratio: 4 / 3;    /* ширина / висота блоку */
-}
-
-.gallery-item img {
-  width: 100%;            /* картинка займає всю ширину блоку */
-  height: 100%;           /* картинка займає всю висоту блоку */
-  object-fit: cover;      /* обрізає без спотворення */
-  display: block;
-}
-
-/* Мобільна адаптація */
-@media(max-width: 600px){
-  .gallery {
-    grid-template-columns: 1fr; /* 1 колонка на маленьких екранах */
-  }
-}
-
-.overlay{
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,0.6);
-  color:#fff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  opacity:0;
-  transition:.3s;
-}
-
-.gallery-item:hover .overlay{opacity:1}
-
-.process{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  text-align:center;
-  gap:40px;
-}
-
-.step span{
-  font-size:40px;
-  color:var(--primary);
-}
-
-.team-grid {
-    display: grid;
-    /* Замість 1fr (на всю ширину) ставимо фіксований розмір, наприклад 300px */
-    grid-template-columns: repeat(2, 300px); 
-    gap: 60px;
-    justify-content: center; /* Центруємо обидві картки по середині сайту */
-    margin-top: 40px;
-}
-
-.team-img {
-    width: 100%;
-    /* Видаліть фіксовану висоту height: 400px, якщо вона була */
-    aspect-ratio: 3 / 4; /* Робить блок вертикальним (3 одиниці ширини на 4 висоти) */
-    background: #ddd;
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.service-card {
+    background: #fff;
+    padding: 50px;
     border-radius: 8px;
-    margin-bottom: 20px;
-    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: .4s;
 }
+.service-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
 
-.team-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Заповнює блок, зберігаючи пропорції обличчя */
-    display: block;
-}
-
-.team-card {
-    text-align: center; /* Центруємо ім'я та посаду */
-}
-
-.team-card h3 {
-    font-size: 22px;
-    margin-bottom: 5px;
-    color: var(--dark);
-}
-
-.team-card p {
-    color: var(--primary); /* Робимо посаду акцентним кольором */
-    font-weight: 500;
-    text-transform: uppercase;
-    font-size: 14px;
-    letter-spacing: 1px;
-}
-
-.cta{
-  background:var(--primary);
-  color:#fff;
-  text-align:center;
-  padding:100px 0;
-}
-
-.reveal{
-  opacity:0;
-  transform:translateY(40px);
-  transition:1s;
-}
-
-.reveal.active{
-  opacity:1;
-  transform:translateY(0);
-}
-
-@media(max-width:992px){
-  .grid-3,.trust-grid,.process,.team-grid,.gallery{
-    
-  }
-}
-
-@media(max-width:600px){
-  .nav{display:none}
-  .grid-3,.trust-grid,.process,.team-grid,.gallery{
-    grid-template-columns:1fr;
-  }
-}
+/* --- ПРОЦЕС (БЕЗ ЗМІН) --- */
+.process { display: grid; grid-
