@@ -325,18 +325,32 @@ body{
   box-shadow:0 20px 40px rgba(0,0,0,0.1);
 }
 
-.gallery{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:20px;
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 колонки на десктопі */
+  gap: 20px;
 }
 
-.gallery-item{
-  height:300px;
-  background:#444;
-  border-radius:8px;
-  position:relative;
-  overflow:hidden;
+.gallery-item {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #444;       /* поки фото не завантажиться */
+  aspect-ratio: 4 / 3;    /* ширина / висота блоку */
+}
+
+.gallery-item img {
+  width: 100%;            /* картинка займає всю ширину блоку */
+  height: 100%;           /* картинка займає всю висоту блоку */
+  object-fit: cover;      /* обрізає без спотворення */
+  display: block;
+}
+
+/* Мобільна адаптація */
+@media(max-width: 600px){
+  .gallery {
+    grid-template-columns: 1fr; /* 1 колонка на маленьких екранах */
+  }
 }
 
 .overlay{
