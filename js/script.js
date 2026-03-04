@@ -37,26 +37,23 @@ if(form && modal) {
 }
 
 // --- SCROLL REVEAL (ОНОВЛЕНО) ---
+// Scroll reveal
 const reveals = document.querySelectorAll(".reveal");
 
-const handleReveal = () => {
-    reveals.forEach(el => {
-        const elementTop = el.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-        
-        // Якщо верх елемента вище ніж висота вікна мінус 100px
-        if(elementTop < windowHeight - 100) {
-            el.classList.add("active");
-        }
-    });
+const revealFunc = () => {
+  reveals.forEach(el => {
+    // Зменшив поріг до -50, щоб анімація спрацьовувала раніше
+    if(el.getBoundingClientRect().top < window.innerHeight - 50){
+      el.classList.add("active");
+    }
+  });
 };
 
-// Запускаємо при скролі
-window.addEventListener("scroll", handleReveal);
+// 1. Слухаємо скрол (як і було)
+window.addEventListener("scroll", revealFunc);
 
-// ВАЖЛИВО: Запускаємо один раз при завантаженні, щоб показати блоки, які вже в екрані
-handleReveal();
-
+// 2. ДОДАЙТЕ ЦЕЙ РЯДОК: він запустить перевірку відразу при завантаженні сторінки
+revealFunc();
 
 // --- COUNTER ANIMATION ---
 const counters = document.querySelectorAll(".counter");
