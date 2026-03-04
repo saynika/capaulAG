@@ -1,94 +1,95 @@
 // js/script.js
 console.log("JS підключено ✅");
 
-// Отримуємо елементи (додав перевірку, щоб не було помилок у консолі)
-const modal = document.getElementById("modal"); 
-const openModal = document.getElementById("openModal");
-const openModalFooter = document.getElementById("openModalFooter");
-const form = document.querySelector("form");
+document.addEventListener("DOMContentLoaded", () => {
 
-// Modal logic
-if(openModal && modal) {
-    openModal.addEventListener("click", () => {
-        modal.style.display = "flex";
-    });
-}
+    // --- МОДАЛЬНЕ ВІКНО ---
+    const modal = document.getElementById("modal"); 
+    const openModal = document.getElementById("openModal");
+    const openModalFooter = document.getElementById("openModalFooter");
+    const form = document.querySelector("form");
 
-if(openModalFooter && modal) {
-    openModalFooter.addEventListener("click", () => {
-        modal.style.display = "flex";
-    });
-}
+    const showModal = () => { if(modal) modal.style.display = "flex"; };
+    const hideModal = () => { if(modal) modal.style.display = "none"; };
 
-if(modal) {
+    if(openModal) openModal.addEventListener("click", showModal);
+    if(openModalFooter) openModalFooter.addEventListener("click", showModal);
+
     window.addEventListener("click", (e) => {
-        if (e.target === modal) {
-            modal.style.display = "none";
-        }
+        if (e.target === modal) hideModal();
     });
-}
 
-if(form && modal) {
-    form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        modal.style.display = "none";
-        alert("Ihre Nachricht wurde erfolgreich gesendet");
-    });
-}
-
-// --- SCROLL REVEAL (ОНОВЛЕНО) ---
-// Scroll reveal
-const reveals = document.querySelectorAll(".reveal");
-
-const revealFunc = () => {
-  reveals.forEach(el => {
-    // Зменшив поріг до -50, щоб анімація спрацьовувала раніше
-    if(el.getBoundingClientRect().top < window.innerHeight - 50){
-      el.classList.add("active");
+    if(form) {
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            hideModal();
+            alert("Ihre Nachricht wurde erfolgreich gesendet");
+        });
     }
-  });
-};
 
-// 1. Слухаємо скрол (як і було)
-window.addEventListener("scroll", revealFunc);
+    // --- ПРОФЕСІЙНИЙ HERO СЛАЙДЕР (FADE EFFECT) ---
+    // Шукаємо слайди саме всередині блоку hero-slider, щоб не зламати інші галереї
+    const heroSlides = document.querySelectorAll('.hero-slider .slide');
+    let currentSlide = 0;
 
-// 2. ДОДАЙТЕ ЦЕЙ РЯДОК: він запустить перевірку відразу при завантаженні сторінки
-revealFunc();
+    function nextHeroSlide() {
+        if (heroSlides.length < 2) return; // Якщо фото одне або немає — нічого не робимо
+        
+        heroSlides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % heroSlides.length;
+        heroSlides[currentSlide].classList.add('active');
+    }
 
-// --- COUNTER ANIMATION ---
-const counters = document.querySelectorAll(".counter");
+    if (heroSlides.length > 0) {
+        // Перемикаємо кожні 5 секунд для плавності (UI/UX стандарт)
+        setInterval(nextHeroSlide, 5000); 
+    }
 
-counters.forEach(counter => {
-    const update = () => {
+    // --- SCROLL REVEAL (Анімація при появі) ---
+    const reveals = document.querySelectorAll(".reveal");
+
+    const revealFunc = () => {
+        reveals.forEach(el => {
+            const elementTop = el.getBoundingClientRect().top;
+            if(elementTop < window.innerHeight - 100){
+                el.classList.add("active");
+            }
+        });
+    };
+
+    window.addEventListener("scroll", revealFunc);
+    revealFunc(); // Запускаємо відразу для першого екрану
+
+    // --- COUNTER ANIMATION (Цифри, що біжать) ---
+    const counters = document.querySelectorAll(".counter");
+
+    const startCounter = (counter) => {
         const target = +counter.getAttribute("data-target");
-        const current = +counter.innerText;
+        let current = 0;
         const increment = target / 100;
 
-        if(current < target){
-            counter.innerText = Math.ceil(current + increment);
-            setTimeout(update, 20);
-        } else {
-            counter.innerText = target;
-        }
+        const update = () => {
+            if(current < target){
+                current += increment;
+                counter.innerText = Math.ceil(current);
+                setTimeout(update, 20);
+            } else {
+                counter.innerText = target;
+            }
+        };
+        update();
     };
-    
-    // Анімацію цифр теж краще запускати, коли їх видно, 
-    // але поки що залишимо як у вас — запуск при старті.
-    update();
+
+    // Запускаємо лічильники тільки коли їх видно на екрані
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting) {
+                startCounter(entry.target);
+                counterObserver.unobserve(entry.target); // Запускаємо лише один раз
+            }
+        });
+    }, { threshold: 0.5 });
+
+    counters.forEach(c => counterObserver.observe(c));
+
 });
-// Автоматичний слайдер для Hero
-const slides = document.querySelectorAll('.slide');
-let currentSlide = 0;
-
-function nextSlide() {
-    if (slides.length === 0) return; // перевірка на всяк випадок
-    
-    slides[currentSlide].classList.remove('active');
-    currentSlide = (currentSlide + 1) % slides.length;
-    slides[currentSlide].classList.add('active');
-}
-
-// Запускаємо інтервал
-if (slides.length > 0) {
-    setInterval(nextSlide, 4000); 
-}
