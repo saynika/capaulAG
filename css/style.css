@@ -163,19 +163,6 @@ body {
   --gray:#f4f4f4;
 }
 
-*{margin:0;padding:0;box-sizing:border-box}
-
-body{
-  font-family:'Montserrat',sans-serif;
-  color:var(--dark);
-  background:#fff;
-}
-
-.container{
-  width:90%;
-  max-width:1200px;
-  margin:auto;
-}
 
 /* HEADER */
 
