@@ -135,16 +135,88 @@ body {
 .section-head { text-align: center; margin-bottom: 60px; }
 .section-head h2 { font-size: 36px; }
 
-/* --- КАРТКИ ПОСЛУГ --- */
-.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+/* --- СТИЛІЗАЦІЯ КАРТОК ПОСЛУГ (TOP UI/UX) --- */
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
 .service-card {
+    position: relative;
     background: #fff;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    padding: 50px 35px 35px;
+    border-radius: 12px;
+    border: 1px solid #f0f0f0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    overflow: hidden; /* Щоб номер не вилазив за межі */
+}
+
+/* Номер на фоні кожної картки */
+.service-card::before {
+    content: "0" counter(services);
+    counter-increment: services;
+    position: absolute;
+    top: -15px;
+    right: -10px;
+    font-size: 110px;
+    font-weight: 800;
+    color: rgba(0, 0, 0, 0.03); /* Дуже легкий сірий */
+    z-index: 0;
     transition: 0.4s;
 }
-.service-card:hover { transform: translateY(-10px); }
+
+/* Червона акцентна смужка зверху, що виїжджає при наведенні */
+.service-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 4px;
+    background: var(--primary);
+    transition: 0.4s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-12px);
+    border-color: rgba(192, 0, 0, 0.2);
+    box-shadow: 0 15px 45px rgba(192, 0, 0, 0.08);
+}
+
+.service-card:hover::after {
+    width: 100%;
+}
+
+.service-card:hover::before {
+    color: rgba(192, 0, 0, 0.05); /* Номер стає червонуватим */
+}
+
+.service-icon {
+    font-size: 42px;
+    display: block;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.service-card h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 2;
+    color: var(--dark);
+}
+
+.service-card p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #555;
+    position: relative;
+    z-index: 2;
+}
 
 /* --- UNSER PROZESS (ВІДНОВЛЕНО) --- */
 .process {
