@@ -93,3 +93,19 @@ document.addEventListener("DOMContentLoaded", () => {
     counters.forEach(c => counterObserver.observe(c));
 
 });
+
+// Додай це всередину document.addEventListener("DOMContentLoaded", () => { ... });
+
+const contactForm = document.getElementById("contactForm");
+if(contactForm) {
+    contactForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        
+        // Тут логіка відправки (наприклад, через EmailJS або просто імітація)
+        const formData = new FormData(contactForm);
+        console.log("Відправка даних:", Object.fromEntries(formData));
+
+        alert("Vielen Dank! Ihre Nachricht wurde gesendet. Wir melden uns so schnell wie möglich.");
+        contactForm.reset();
+    });
+}
