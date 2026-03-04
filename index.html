@@ -5,36 +5,28 @@
     <meta charset="UTF-8">
     <title>CAPAUL BAU AG</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
 
 <header class="header">
     <div class="container header-container">
-
         <div class="logo">
             <img src="images/logo1.png" alt="CAPAUL BAU AG Logo">
         </div>
 
         <nav class="nav">
-            <a href="#">Kompetenzen</a>
-            <a href="#">Team</a>
-            <a href="#">Kontakt</a>
+            <a href="#services">Kompetenzen</a>
+            <a href="#team">Team</a>
+            <a href="#contact">Kontakt</a>
             <a href="#">Über die Firma</a>
         </nav>
 
         <div class="header-actions">
-            <a href="tel:+41792221127" class="btn btn-primary">
-                ☎ Anrufen
-            </a>
-            <button class="btn btn-primary" id="openModal">
-                📬 Schreiben
-            </button>
+            <a href="tel:+41792221127" class="btn btn-primary">☎ Anrufen</a>
+            <a href="#contact" class="btn btn-primary">📬 Schreiben</a>
         </div>
-
     </div>
 </header>
     
@@ -54,8 +46,8 @@
                 mit höchster Präzision, Effizienz und absoluter Termintreue.
             </p>
             <div class="hero-buttons reveal active">
-                <a href="#" class="btn btn-primary btn-large">Projekt besprechen</a>
-                <a href="#" class="btn btn-outline-light btn-large">Referenzen ansehen</a>
+                <a href="#contact" class="btn btn-primary btn-large">Projekt besprechen</a>
+                <a href="#services" class="btn btn-outline-light btn-large">Referenzen ansehen</a>
             </div>
         </div>
     </div>
@@ -70,7 +62,7 @@
     </div>
 </section>
 
-<section class="section" style="counter-reset: services;">
+<section id="services" class="section" style="counter-reset: services;">
     <div class="container">
         <div class="section-head reveal">
             <h2>Unsere Leistungen</h2>
@@ -113,7 +105,7 @@
     </div>
 </section>
 
-<section class="section">
+<section id="team" class="section">
     <div class="container">
         <div class="section-head">
             <h2>Unser Team</h2>
@@ -142,7 +134,42 @@
     <div class="container">
         <h2>Planen Sie ein Bauprojekt?</h2>
         <p>Lassen Sie uns Ihr Vorhaben professionell realisieren.</p>
-        <a href="#" class="btn btn-primary">Jetzt unverbindlich anfragen</a>
+        <a href="#contact" class="btn btn-outline-light btn-large">Jetzt unverbindlich anfragen</a>
+    </div>
+</section>
+
+<section id="contact" class="section contact-section">
+    <div class="container">
+        <div class="section-head reveal">
+            <h2>Kontaktieren Sie uns</h2>
+            <p>Wir freuen uns auf Ihre Nachricht oder Ihren Anruf.</p>
+        </div>
+        
+        <div class="contact-grid">
+            <div class="contact-form-container reveal">
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Ihr Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Ihre E-Mail" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" rows="5" placeholder="Ihre Nachricht" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Nachricht senden</button>
+                </form>
+            </div>
+
+            <div class="contact-info reveal">
+                <div class="info-card">
+                    <span class="info-icon">📞</span>
+                    <h3>Rufen Sie uns an</h3>
+                    <p>Haben Sie Fragen? Wir sind nur einen Anruf entfernt.</p>
+                    <a href="tel:+41792221127" class="btn btn-primary btn-call">+41 79 222 11 27</a>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -150,22 +177,20 @@
     <div class="container footer-container">
         <div class="footer-column">
             <h3>CAPAUL BAU AG</h3>
-            <p>Rüfiwisweg 16a</p>
-            <p>7203 Trimmis</p>
+            <p>Rüfiwisweg 16a, 7203 Trimmis</p>
             <p>+41 79 222 11 27</p>
             <p>Capaulbauag@gmail.com</p>
-            <a href="https://wa.me/41792221127" target="_blank" class="btn btn-whatsapp">
+            <a href="https://wa.me/41792221127" target="_blank" class="btn-whatsapp-modern">
                 WhatsApp schreiben
             </a>
         </div>
 
         <div class="footer-column">
             <h3>Navigation</h3>
-            <a href="#">Kompetenzen</a>
-            <a href="#">Team</a>
-            <a href="#">Kontakt</a>
+            <a href="#services">Kompetenzen</a>
+            <a href="#team">Team</a>
+            <a href="#contact">Kontakt</a>
             <a href="#">Über die Firma</a>
-        
         </div>
 
         <div class="footer-column">
