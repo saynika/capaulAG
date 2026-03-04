@@ -374,11 +374,37 @@ body {
   gap:40px;
 }
 
-.team-img{
-  height:320px;
-  background:#ddd;
-  border-radius:8px;
-  margin-bottom:20px;
+.team-img {
+    height: 400px; /* Можна збільшити висоту для кращого вигляду */
+    background: #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden; /* Важливо: щоб картинка не виступала за закруглені кути */
+}
+
+.team-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Картинка заповнить блок, обрізаючись по краях без деформації */
+    display: block;
+}
+
+.team-card {
+    text-align: center; /* Центруємо ім'я та посаду */
+}
+
+.team-card h3 {
+    font-size: 22px;
+    margin-bottom: 5px;
+    color: var(--dark);
+}
+
+.team-card p {
+    color: var(--primary); /* Робимо посаду акцентним кольором */
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
 }
 
 .cta{
