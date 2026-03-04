@@ -96,67 +96,93 @@ body {
 .btn-primary:hover { background: #900000; transform: translateY(-2px); }
 .btn-outline.light { border: 2px solid #fff; color: #fff; }
 
-/* --- HERO (ВИПРАВЛЕНО: ТЕКСТ ЗЛІВА, ФОТО ПІД НИМ) --- */
-.hero {
-    min-height: 100vh;
-    background: linear-gradient(135deg,#000,#333);
-    display: block; /* Важливо для вирівнювання зліва */
-    color: #fff;
-    padding-top: 150px;
-    padding-bottom: 60px;
-}
-
-.hero h1 {
-    font-size: 52px;
-    font-weight: 800;
-    margin-bottom: 20px;
-    text-align: left;
-}
-
-.hero p {
-    max-width: 600px;
-    margin-bottom: 30px;
-    font-size: 18px;
-    text-align: left;
-}
-
-.hero-buttons { display: flex; gap: 20px; justify-content: flex-start; margin-bottom: 50px; }
-
-/* --- ГАЛЕРЕЯ-СЛАЙДЕР (НОВЕ: ФОТКИ ТЕПЕР ПРАЦЮЮТЬ) --- */
-.slider-container {
+/* --- НОВИЙ PREMUM HERO (ТЕКСТ ПОВЕРХ СЛАЙДЕРА) --- */
+.hero-slider {
     position: relative;
     width: 100%;
-    max-width: 1000px; /* Ширина галереї */
-    height: 500px;      /* ВИСОТА: тепер фотки не "зникають" */
-    border-radius: 15px;
+    height: 100vh; /* На весь екран */
+    display: flex;
+    align-items: center; /* Центрує текст по вертикалі всередині слайдера */
     overflow: hidden;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-    background: #222;
+    background: #000;
 }
 
-.slide {
+/* Контейнер для фото-фону */
+.slider-wrapper {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 1.5s ease-in-out;
+    z-index: 1;
 }
 
-.slide.active { opacity: 1; z-index: 2; }
+.slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.8s ease-in-out; /* Плавне розчинення */
+}
 
+.slide.active {
+    opacity: 1;
+    z-index: 2;
+}
+
+/* Градієнтний оверлей для того, щоб текст зліва ЗАВЖДИ читався */
 .slider-overlay {
     position: absolute;
-    bottom: 20px;
-    left: 20px;
-    background: var(--primary);
+    inset: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 100%);
+    z-index: 3;
+}
+
+/* Контентний шар */
+.hero-content-wrapper {
+    position: relative;
+    z-index: 10; /* Вище за всі картинки */
+    width: 95%;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.hero-content {
+    max-width: 750px;
+    text-align: left;
     color: #fff;
-    padding: 10px 20px;
-    font-weight: 700;
-    z-index: 10;
-    border-radius: 4px;
+}
+
+.hero-content h1 {
+    font-size: 56px;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 19px;
+    margin-bottom: 35px;
+    opacity: 0.9;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+/* Стиль для кнопки-аутлайну, щоб вона була білою поверх фото */
+.btn-outline-light {
+    border: 2px solid #fff;
+    color: #fff;
+    background: transparent;
+}
+
+.btn-outline-light:hover {
+    background: #fff;
+    color: #000;
 }
 
 /* --- TRUST (БЕЗ ЗМІН) --- */
