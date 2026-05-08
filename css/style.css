@@ -611,3 +611,40 @@ img {
         padding: 24px 18px;
     }
 }
+
+/* =========================================================
+   LEGAL PAGES
+========================================================= */
+
+.legal-page {
+    max-width: 900px;
+}
+
+.legal-content {
+    background: #fff;
+    padding: 50px;
+    border-radius: 14px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+    line-height: 1.9;
+    color: #444;
+}
+
+.legal-content p:not(:last-child) {
+    margin-bottom: 24px;
+}
+
+.legal-footer {
+    margin-top: 40px;
+    padding-top: 25px;
+    border-top: 1px solid #eee;
+    font-weight: 600;
+    color: #111;
+}
+
+@media (max-width: 767px) {
+
+    .legal-content {
+        padding: 30px 22px;
+    }
+
+}
