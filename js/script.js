@@ -58,6 +58,8 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     window.addEventListener("scroll", revealFunc);
+    // Prevent animation issues on resize/orientation change
+window.addEventListener("resize", revealFunc);
     revealFunc(); // Запускаємо відразу для першого екрану
 
     // --- COUNTER ANIMATION (Цифри, що біжать) ---
