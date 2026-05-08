@@ -277,3 +277,337 @@ body {
     .nav { display: none; }
     .hero-content h1 { font-size: 32px; }
 }
+
+
+/* =========================================================
+   RESPONSIVE IMPROVEMENTS
+   ADDITIVE ONLY — DESKTOP SAFE
+========================================================= */
+
+/* Prevent accidental horizontal scroll */
+html,
+body {
+    overflow-x: hidden;
+}
+
+/* Better responsive media behavior */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1023px) {
+
+    .container {
+        width: 94%;
+    }
+
+    .header-container {
+        gap: 20px;
+    }
+
+    .nav {
+        gap: 20px;
+    }
+
+    .header-actions {
+        margin-left: 10px;
+        gap: 10px;
+    }
+
+    .hero-content {
+        max-width: 650px;
+    }
+
+    .hero-content h1 {
+        font-size: 46px;
+        line-height: 1.15;
+    }
+
+    .hero-content p {
+        font-size: 17px;
+    }
+
+    .grid-3 {
+        grid-template-columns: 1fr;
+    }
+
+    .process {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .step {
+        min-width: 220px;
+    }
+
+    .step:not(:last-child)::after {
+        display: none;
+    }
+
+    .team-grid {
+        grid-template-columns: repeat(2, minmax(240px, 1fr));
+        gap: 40px;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 767px) {
+
+    .header {
+        padding: 0;
+    }
+
+    .header-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 14px 0;
+        gap: 14px;
+    }
+
+    .logo img {
+        height: 52px;
+    }
+
+    .nav {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-left: 0;
+    }
+
+    .nav a {
+        font-size: 14px;
+    }
+
+    .header-actions {
+        width: 100%;
+        margin-left: 0;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .header-actions .btn {
+        flex: 1;
+        min-width: 140px;
+    }
+
+    /* HERO */
+
+    .hero-slider {
+        min-height: 100svh;
+        height: auto;
+        padding: 140px 0 80px;
+    }
+
+    .hero-slider .slider-overlay {
+        background:
+            linear-gradient(
+                to bottom,
+                rgba(0,0,0,0.8),
+                rgba(0,0,0,0.45)
+            );
+    }
+
+    .hero-content {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(34px, 8vw, 48px);
+        line-height: 1.15;
+        margin-bottom: 18px;
+    }
+
+    .hero-content p {
+        font-size: 16px;
+        line-height: 1.7;
+        margin-bottom: 28px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+    }
+
+    /* SECTIONS */
+
+    .section {
+        padding: 80px 0;
+    }
+
+    .section-head {
+        margin-bottom: 40px;
+    }
+
+    .section-head h2 {
+        font-size: 30px;
+    }
+
+    /* TRUST */
+
+    .trust {
+        padding: 60px 0;
+    }
+
+    .trust-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+
+    .trust h3 {
+        font-size: 34px;
+    }
+
+    /* SERVICES */
+
+    .grid-3 {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .service-card {
+        padding: 40px 25px 28px;
+    }
+
+    .service-card::before {
+        font-size: 80px;
+    }
+
+    /* PROCESS */
+
+    .process {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 20px;
+    }
+
+    .step {
+        padding: 10px;
+    }
+
+    .step span {
+        font-size: 40px;
+    }
+
+    /* TEAM */
+
+    .team-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    /* CTA */
+
+    .cta {
+        padding: 70px 0;
+    }
+
+    .cta h2 {
+        font-size: 30px;
+    }
+
+    .cta p {
+        font-size: 16px;
+    }
+
+    /* CONTACT */
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .info-card {
+        padding: 30px 24px;
+    }
+
+    /* FOOTER */
+
+    .footer {
+        padding: 60px 0 30px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .footer-column {
+        min-width: unset;
+    }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .container {
+        width: 92%;
+    }
+
+    .hero-slider {
+        padding-top: 160px;
+    }
+
+    .hero-content h1 {
+        font-size: 30px;
+    }
+
+    .hero-content p {
+        font-size: 15px;
+    }
+
+    .btn {
+        padding: 12px 18px;
+        font-size: 14px;
+    }
+
+    .trust-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section {
+        padding: 70px 0;
+    }
+
+    .section-head h2 {
+        font-size: 26px;
+    }
+
+    .service-card {
+        padding: 35px 20px 24px;
+    }
+
+    .service-card h3 {
+        font-size: 20px;
+    }
+
+    .cta h2 {
+        font-size: 26px;
+    }
+
+    .info-card {
+        padding: 24px 18px;
+    }
+}
